@@ -26,13 +26,28 @@ The IP address to assign to the VM on the virtual network that connects it to th
 
 ### DOCKER\_FWDPORT\_MIN, DOCKER\_FWDPORT\_MAX
 
-The Vagrant definition maps a range of high ports from the VM to the host. Docker containers that publish ports in this range will have those ports accessible from the VM host. By default this range is 48000-48199, but this can be changed with the DOCKER\_FWDPORT\_MIN and DOCKER\_FWDPORT\_MAX variables.
+The Vagrant definition maps a range of high ports from the VM to the host. Docker containers that publish ports in this range will have those ports accessible from the VM host. By default this range is 48000-48199, but this can be changed with the `DOCKER_FWDPORT_MIN` and `DOCKER_FWDPORT_MAX` variables.
 
 ## Build folder
 
 This VM enables the default share which maps the folder containing the Vagrantfile to the `/vagrant` folder in the guest VM.
 
 If you create a folder named `build` under the project its contents will be ignored by Git. This makes it a suitable place to put your Docker Compose projects, Dockerfiles, and git repositories.
+
+## Shell shortcuts
+
+The `vagrant` login in the VM is configured to contain a few shortcuts to assist Docker development:
+
+- `d` is an alias for "docker"
+- `dc` is an alias for "docker-compose"
+- `dsh` is a Bash function that takes the name of a running container as an argument and opens an interactive Bash shell inside it via "docker exec"
+
+## Getting Docker and Compose updates
+
+If a newer stable release of Docker is released, you should be able to upgrade your VM with `docker provision`.
+
+If a newer version of Docker Compose is released, you will need to update the `DOCKER_COMPOSE_VERSION`
+variable in the `Vagrantfile` and then create the VM with `vagrant destroy` and `vagrant up`.
 
 
 ## Possible future enhancements
