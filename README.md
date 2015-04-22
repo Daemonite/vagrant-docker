@@ -49,6 +49,7 @@ If a newer stable release of Docker is released, you should be able to upgrade y
 
 If a newer version of Docker Compose is released, you will need to update the `DOCKER_COMPOSE_VERSION`
 variable in the `Vagrantfile` and then create the VM with `vagrant destroy` and `vagrant up`.
+Alternately, you can upgrade by following the [Compose install instructions](https://docs.docker.com/compose/install/#install-compose).
 
 
 ## Possible future enhancements
