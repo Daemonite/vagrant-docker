@@ -23,12 +23,11 @@ DOCKER_COMPOSE_VERSION = ENV['DOCKER_COMPOSE_VERSION'] || '1.1.0'
 DOCKER_COMPOSE_EXE     = 'docker-compose'
 
 $script = <<SCRIPT
-su - vagrant -c 'echo -e "\\nalias d=docker\\nalias dc=docker-compose" >> ~/.bash_aliases'
-su - vagrant -c 'echo -e "\\nfunction dsh { docker exec -ti \\"\\$1\\" bash -l; }" >> ~/.bashrc'
-cp /vagrant/docker_default /etc/default/docker
+cat /vagrant/bash_aliases.sh >> /home/vagrant/.bash_aliases
+echo -e "\\nfunction dsh { docker exec -ti \\"\\$1\\" bash -l; }" >> /home/vagrant/.bashrc
 mkdir -p /home/vagrant/.ssh
 cp /vagrant/image/insecure_key /home/vagrant/.ssh/id_rsa
-chown -R vagrant.vagrant /home/vagrant/.ssh
+chown -R vagrant.vagrant /home/vagrant/.bash_aliases /home/vagrant/.ssh
 chmod -R go= /home/vagrant/.ssh
 if [ ! -f /vagrant/tools/docker-compose ]; then
   mkdir -p /vagrant/tools

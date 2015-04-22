@@ -40,6 +40,7 @@ The `vagrant` login in the VM is configured to contain a few shortcuts to assist
 
 - `d` is an alias for "docker"
 - `dc` is an alias for "docker-compose"
+- `dclean` is an alias to delete all untagged Docker images (usually left over from old builds)
 - `dsh` is a Bash function that takes the name of a running container as an argument and opens an interactive Bash shell inside it via "docker exec"
 
 ## Getting Docker and Compose updates
